@@ -4,10 +4,152 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     <title>Survey</title>
 </head>
 <body>
-    <h1>Survey</h1>
-    <a href="/home">Home</a>
+    <div class="conatiner">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-6">
+                <h1>Survey</h1>
+                <a href="/home">Home</a>
+                <form id="friend-survey">
+                    <div class="form-group">
+                        <label for="qName">Name</label>
+                        <input type="text" class="form-control" id="qName" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="qPic">Profile image</label>
+                        <input type="text" class="form-control" id="qPic" placeholder="Profile image link">
+                    </div>
+                    <div class="form-group">
+                        <label for="q1">Goku is cool</label>
+                        <select class="form-control" id="q1">
+                            <option value="">Select an answer--</option>
+                            <option value="1">1 (strongly disagree)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (strongly agree)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="q2">Goku is lame</label>
+                        <select class="form-control" id="q2">
+                            <option value="">Select an answer--</option>
+                            <option value="1">1 (strongly disagree)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (strongly agree)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="q3">Vegeta is nice</label>
+                        <select class="form-control" id="q3">
+                            <option value="">Select an answer--</option>
+                            <option value="1">1 (strongly disagree)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (strongly agree)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="q4">Vegeta is not nice</label>
+                        <select class="form-control" id="q4">
+                            <option value="">Select an answer--</option>
+                            <option value="1">1 (strongly disagree)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (strongly agree)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="q5">Goku and Vegeta are actually not that bad</label>
+                        <select class="form-control" id="q5">
+                            <option value="">Select an answer--</option>
+                            <option value="1">1 (strongly disagree)</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5 (strongly agree)</option>
+                        </select>
+                    </div>
+
+                    <button id="survey-submit" type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        
+
+        $("#survey-submit").on("click", function(e){
+            e.preventDefault();
+
+            var name = $("#qName").val().trim();
+            var pic = $("#qPic").val().trim();
+
+            var q1 = $("#q1").val();
+            var q2 = $("#q2").val();
+            var q3 = $("#q3").val();
+            var q4 = $("#q4").val();
+            var q5 = $("#q5").val();
+
+            // if(name || pic || q1 || q2 || q3 === "")
+            
+            //IF all questions answered
+            if(name === "" ||
+            pic === "" ||
+            q1 === "" ||
+            q2 === "" ||
+            q3 === "" ||
+            q4 === "" ||
+            q5 === ""){
+                alert("Please answer all questions!");
+            } else{
+                //Create friend object
+                var newFriend = {
+                    "name": name,
+                    "pic": pic,
+                    "scores": [parseInt(q1), parseInt(q2), parseInt(q3), parseInt(q4), parseInt(q5)]
+                };
+
+
+                console.log(newFriend);
+                $.post("/api/friends", newFriend, function(data) {
+
+                    // Best match from server
+                    if (data) {
+                        console.log("Best match from server:");
+                        console.log(data);
+
+                        // Construct modal
+                    }
+
+                    // If no friend was returned
+                    else {
+                        alert("Sorry there was no match...");
+                    }
+
+                    // Clear the form when submitting
+                    $("#qName").val("");
+                    $("#qPic").val("");
+
+                });
+            }
+
+            
+        });
+    </script>
 </body>
 </html>
