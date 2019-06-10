@@ -15,7 +15,7 @@ var friendArray = [
         scores: [1, 2, 3, 4, 5, 1, 2, 3, 4, 5]
     },
     {
-        name: "Seepd Racer",
+        name: "Speed Racer",
         pic: "https://picsum.photos/200",
         scores: [5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
     },
