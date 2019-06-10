@@ -8,14 +8,15 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Survey</title>
+    <title>Friend Finder - Survey</title>
 </head>
 <body>
     <div class="conatiner">
         <div class="row d-flex justify-content-center">
             <div class="col-md-6">
-                <h1>Survey</h1>
-                <a href="/home">Home</a>
+                <h1>Find-a-Friend Survey</h1>
+                <a href="/home">Friend Finder Home</a>
+                <hr>
                 <form id="friend-survey">
                     <div class="form-group">
                         <label for="qName">Name</label>
@@ -23,7 +24,7 @@
                     </div>
                     <div class="form-group">
                         <label for="qPic">Profile image</label>
-                        <input type="text" class="form-control" id="qPic" placeholder="Profile image link">
+                        <input type="text" class="form-control" id="qPic" value="https://picsum.photos/200">
                     </div>
                     <div class="form-group">
                         <label for="q1">Goku is cool</label>
@@ -83,9 +84,13 @@
 
                     <button id="survey-submit" type="submit" class="btn btn-primary">Submit</button>
                 </form>
+                <div class="mt-5">
+                    <a href="/api/friends">Friends API</a> | <a href="https://github.com/phillipbooker/FriendFinder">Github Repo</a>
+                </div>
             </div>
         </div>
     </div>
+    
     <div id="match-modal" class="modal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
