@@ -10,6 +10,7 @@ module.exports = function(app){
     });
 
     app.get("*", function(req, res){
+        res.redirect('/home');
         res.sendFile(path.join(__dirname, "../public/home.html"));
     });
 };
