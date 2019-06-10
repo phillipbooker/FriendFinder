@@ -8,6 +8,21 @@ var friendArray = [
         name: "Joey Wheeler",
         pic: "https://picsum.photos/200",
         scores: [3, 5, 2, 1, 4, 2, 2, 2, 5, 1]
+    },
+    {
+        name: "Michael Jordan",
+        pic: "https://picsum.photos/200",
+        scores: [1, 2, 3, 4, 5, 1, 2, 3, 4, 5]
+    },
+    {
+        name: "Seepd Racer",
+        pic: "https://picsum.photos/200",
+        scores: [5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
+    },
+    {
+        name: "Elizabeth Banks",
+        pic: "https://picsum.photos/200",
+        scores: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     }
 ];
 
